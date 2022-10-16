@@ -10,30 +10,31 @@ class Cell:
     """
     _recent_id = -1
 
-    def __init__(self, possibilities_num):
+    def __init__(self, possibilities_num=9):
         self.id = self._assign_id()
         self.possibilities = [i for i in range(1, possibilities_num + 1)]
         self.value = 0
 
-    def __repr__(self):
+    def __str__(self):
         if self.value == 0:
-            rep = f"Cell id = 0, \n" \
+            _str = f"Cell id = 0, \n" \
                   f"Cell possible values = {self.possibilities}"
         else:
-            rep = f"Cell id = 0, \n" \
+            _str = f"Cell id = 0, \n" \
                   f"Cell value = {self.value}"
-        return rep
+        return _str
 
     def _assign_id(self):
         Cell._recent_id += 1
         return self._recent_id
 
-    def react_to_possibility_change(self):
-        if len(self.possibilities) == 1:
-            self.value = self.possibilities.pop()
+    def _react_to_possibility_change(self):
+        tmp = self.possibilities.pop()
+        if len(self.possibilities) == 0:
+            self.value = tmp
+        del tmp
 
     def remove_possibility(self, possibility):
         if possibility in self.possibilities:
             self.possibilities.remove(possibility)
-            self.react_to_possibility_change()
-
+            self._react_to_possibility_change()
