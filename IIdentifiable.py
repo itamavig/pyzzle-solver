@@ -1,9 +1,25 @@
+from abc import ABC
 
 
-class IIdentifiable:
-    _recent_id = -1
+class IdGenerator:
+    def __init__(self):
+        self.counter = -1
+
+    def __iter__(self):
+        while True:
+            self.counter += 1
+            yield self.counter
+
+
+class IIdentifiable(ABC):
+    _counter = IdGenerator()
+
+    def __init__(self):
+        self._assign_id()
+
+    def _create_id(self):
+        for i in self._counter:
+            yield i
 
     def _assign_id(self):
-        IIdentifiable._recent_id += 1
-        return IIdentifiable._recent_id
-
+        self.id = self._create_id()
