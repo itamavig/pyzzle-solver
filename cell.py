@@ -3,9 +3,7 @@ Class Cell.
 This object represents a cell in a board puzzle.
 """
 from IIdentifiable import IIdentifiable
-
-cells = dict()
-
+from common import GlobalParameters
 
 class Cell(IIdentifiable):
     """
@@ -17,7 +15,7 @@ class Cell(IIdentifiable):
         super().__init__()
         self.possibilities = [i for i in range(1, possibilities_num + 1)]
         self.value = 0
-        cells[self.id] = self
+        GlobalParameters.all_cells[self.id] = self
 
     def __str__(self):
         if self.value == 0:
