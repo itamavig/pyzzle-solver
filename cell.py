@@ -5,6 +5,7 @@ This object represents a cell in a board puzzle.
 from IIdentifiable import IIdentifiable
 from common import GlobalParameters
 
+
 class Cell(IIdentifiable):
     """
     This object represents a cell in a board puzzle.
