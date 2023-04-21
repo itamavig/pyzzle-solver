@@ -5,6 +5,6 @@ from IIdentifiable import IIdentifiable
 
 
 class Board(IIdentifiable):
-    def __init__(self):
+    def __init__(self, grid: np.array):
         super().__init__()
-        self.grid = np.ndarray(shape=(9, 9), dtype=Cell)
+        self.grid = grid
