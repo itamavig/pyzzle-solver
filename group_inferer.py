@@ -11,10 +11,10 @@ class _GroupInfer:
         self.groups = self._infer_all_groups()
 
     def _infer_all_groups(self):
-        groups = List[Group]
-        groups.extend(self._groups_from_rows())
-        groups.extend(self._groups_from_columns())
-        groups.extend(self._groups_from_boxes())
+        groups: List[Group] = []
+        groups.extend(list(self._groups_from_rows()))
+        groups.extend(list(self._groups_from_columns()))
+        groups.extend(list(self._groups_from_boxes()))
         return groups
 
     def _groups_from_rows(self):
@@ -39,4 +39,4 @@ class _GroupInfer:
 
 
 def infer_groups_from_board(board: Board):
-    return _GroupInfer(board).groups
+    return _GroupInfer(board).get_groups()
