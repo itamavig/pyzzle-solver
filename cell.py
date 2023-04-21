@@ -20,10 +20,10 @@ class Cell(IIdentifiable):
 
     def __str__(self):
         if self.value == 0:
-            _str = f"Cell id = 0, \n" \
+            _str = f"Cell id = {self.id}, \n" \
                    f"Cell possible values = {self.possibilities}"
         else:
-            _str = f"Cell id = 0, \n" \
+            _str = f"Cell id = {self.id}, \n" \
                    f"Cell value = {self.value}"
         return _str
 
@@ -32,10 +32,8 @@ class Cell(IIdentifiable):
     #     return self._recent_id
 
     def _react_to_possibility_change(self):
-        tmp = self.possibilities.pop()
-        if len(self.possibilities) == 0:
-            self.value = tmp
-        del tmp
+        if len(self.possibilities) == 1:
+            self.value = self.possibilities[0]
 
     def remove_possibility(self, possibility):
         if possibility in self.possibilities:
