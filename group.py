@@ -31,7 +31,7 @@ class Group(IIdentifiable):
             print(f"Logical Redundancy Warning: program has been trying to assign \n"
                   f"to cell {cell_id} value {value} at least twice")
             return
-        GlobalParameters.all_cells[cell_id] = value
+        GlobalParameters.all_cells[cell_id].value = value
 
     def _get_assigned_values(self):
         current_group_values = dict()
