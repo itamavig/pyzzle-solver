@@ -13,7 +13,7 @@ class Cell(IIdentifiable):
     _recent_id = -1
 
     def __init__(self, possibilities_num=9):
-        super().__init__()
+        super().__init__()  # Creates Identifier for instance
         self.possibilities = [i for i in range(1, possibilities_num + 1)]
         self.value = 0
         GlobalParameters.all_cells[self.id] = self
