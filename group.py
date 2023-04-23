@@ -1,9 +1,7 @@
 from dataclasses import dataclass
-from typing import List
+from typing import List, Dict
 
-from IIdentifiable import IIdentifiable
-from cell import Cell
-from common import GlobalParameters
+from cell import Cell, GlobalParameters, IIdentifiable
 
 
 class Group(IIdentifiable):
@@ -40,3 +38,4 @@ class Group(IIdentifiable):
                 current_group_values[c.id] = c.value
         return current_group_values
 
+all_groups = Dict[int, Group]
