@@ -11,7 +11,10 @@ class Cell:
             self.value = self.options[0]
 
     def remove_option(self, option):
-        self.options.remove(option)
+        if option in self.options:
+            self.options.remove(option)
         self.assign_value_if_possible()
 
-
+    def manual_set(self, value):
+        self.value = value
+        self.options = [value]
